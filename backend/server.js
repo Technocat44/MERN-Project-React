@@ -24,14 +24,24 @@ express.get('/',(req, res, next) => {
 })
 */
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
 
     res.status(200).json({ message: "Welcome to the support desk API"})
 })
 
-app.use('/api/users', require('./routes/userRoutes'))
+
+/* When a request for /api/users comes in to the server we use the callback function 
+which goes to routes/userRoutes.js,
+which when its a post request, uses the callback function registerUser
+which is in controllers/userController.js and that function handles the request.
+*/
+app.use('/a', (req, res, next) => {
+
+})
+app.use('/api/users', (require('./routes/userRoutes')))
 
 app.use(errorHandler)
+
 
 app.listen(
     PORT,
