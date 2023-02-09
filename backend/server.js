@@ -35,11 +35,10 @@ which goes to routes/userRoutes.js,
 which when its a post request, uses the callback function registerUser
 which is in controllers/userController.js and that function handles the request.
 */
-app.use('/a', (req, res, next) => {
 
-})
 app.use('/api/users', (require('./routes/userRoutes')))
 
+// The error handler needs to be the final middleware in the server
 app.use(errorHandler)
 
 
